@@ -1,27 +1,27 @@
 package store;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
 import io.restassured.response.Response;
 import org.example.backend.models.common.Error;
 import org.example.backend.models.store.Order;
 import org.testng.annotations.Test;
 
+import static io.qameta.allure.SeverityLevel.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.example.backend.customAssertions.OrderAssertion.assertOrdersAreEqual;
 import static org.example.backend.factories.common.ErrorFactory.error404;
 import static org.example.backend.factories.common.ErrorFactory.error404WithTypeUnknown;
-import static org.example.backend.factories.store.OrderFactory.order;
 import static org.example.backend.factories.store.OrderFactory.randomOrder;
 import static org.example.backend.models.common.ErrorMessage.NUMBER_FORMAT_EXCEPTION_ERROR;
 import static org.example.backend.models.common.ErrorMessage.ORDER_NOT_FOUND_ERROR;
-import static org.example.backend.models.store.OrderStatus.PLACED;
 import static org.example.backend.services.StoreService.*;
-import static org.example.framework.TimeUtilities.currentIso;
 import static org.example.framework.Utilities.extractResponseAs;
 
 public class OrderDetailsTest {
 
     @Test
+    @Severity(CRITICAL)
     @Description("Check order details are equal to expected order")
     public void checkOrderDetailsAreEqualToExpectedOrder() {
         // Precondition
@@ -37,6 +37,7 @@ public class OrderDetailsTest {
     }
 
     @Test
+    @Severity(MINOR)
     @Description("Check order details for not existing order")
     public void checkOrderDetailsForNotExistingOrder() {
         Response response = getOrderDetailsAsResponse(-1);
@@ -45,6 +46,7 @@ public class OrderDetailsTest {
     }
 
     @Test
+    @Severity(TRIVIAL)
     @Description("Check order details for not valid order ID")
     public void checkOrderDetailsForNotValidOrderId() {
         Response response = getOrderDetailsAsResponse(null);
@@ -54,6 +56,7 @@ public class OrderDetailsTest {
     }
 
     @Test
+    @Severity(MINOR)
     @Description("Check order details for deleted order")
     public void checkOrderDetailsForDeletedOrder() {
         // Precondition

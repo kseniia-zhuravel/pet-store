@@ -2,12 +2,14 @@ package store;
 
 import dataProviders.StoreDataProvider;
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
 import io.restassured.response.Response;
 import org.example.backend.models.common.Error;
 import org.example.backend.models.store.Order;
 import org.example.backend.models.store.OrderStatus;
 import org.testng.annotations.Test;
 
+import static io.qameta.allure.SeverityLevel.NORMAL;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.example.backend.customAssertions.OrderAssertion.assertOrdersAreEqual;
 import static org.example.backend.customAssertions.OrderAssertion.assertOrdersAreNotEqual;
@@ -27,6 +29,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the ID field validation with valid values")
     public void checkIdFieldValidationWithValidValues(int id) {
         Order expectedOrder = order(id, getRandomInt(), getRandomInt(), currentIso(), PLACED, true);
@@ -38,6 +41,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intInvalidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the ID field validation with invalid values")
     public void checkIdFieldValidationWithInvalidValues(int id) {
         Order expectedOrder = order(id, getRandomInt(), getRandomInt(), currentIso(), PLACED, true);
@@ -50,6 +54,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the Pet ID field validation with valid values")
     public void checkPetIdFieldValidationWithValidValues(int id) {
         Order expectedOrder = order(getRandomInt(), id, getRandomInt(), currentIso(), PLACED, true);
@@ -61,6 +66,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intInvalidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the Pet ID field validation with invalid values")
     public void checkPetIdFieldValidationWithInvalidValues(int id) {
         Order expectedOrder = order(getRandomInt(), id, getRandomInt(), currentIso(), PLACED, true);
@@ -73,6 +79,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the quantity field validation with valid values")
     public void checkQuantityFieldValidationWithValidValues(int quantity) {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), quantity, currentIso(), PLACED, true);
@@ -84,6 +91,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "intInvalidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the quantity field validation with invalid values")
     public void checkQuantityFieldValidationWithInvalidValues(int quantity) {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), quantity, currentIso(), PLACED, true);
@@ -96,6 +104,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "shipDateValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the ship date field validation with valid values")
     public void checkShipDateFieldValidationWithValidValues(String shipDate) {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), getRandomInt(), shipDate, PLACED, true);
@@ -104,6 +113,7 @@ public class OrderValidationTest extends BaseStoreTest {
     }
 
     @Test
+    @Severity(NORMAL)
     @Description("Check the ship date field validation with invalid values")
     public void checkShipDateFieldValidationWithInvalidValues() {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), getRandomInt(), getRandomWord(), PLACED, true);
@@ -116,6 +126,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "statusValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the status field validation with valid values")
     public void checkStatusFieldValidationWithValidValues(OrderStatus status) {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), getRandomInt(), currentIso(), status, true);
@@ -127,6 +138,7 @@ public class OrderValidationTest extends BaseStoreTest {
             dataProvider = "completeValidValues",
             dataProviderClass = StoreDataProvider.class
     )
+    @Severity(NORMAL)
     @Description("Check the status field validation with valid values")
     public void checkCompleteFieldValidationWithValidValues(boolean complete) {
         Order expectedOrder = order(getRandomInt(), getRandomInt(), getRandomInt(), currentIso(), PLACED, complete);

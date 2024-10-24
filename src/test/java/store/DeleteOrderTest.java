@@ -1,11 +1,14 @@
 package store;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
 import io.restassured.response.Response;
 import org.example.backend.models.common.Error;
 import org.example.backend.models.store.Order;
 import org.testng.annotations.Test;
 
+import static io.qameta.allure.SeverityLevel.CRITICAL;
+import static io.qameta.allure.SeverityLevel.MINOR;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.example.backend.factories.common.ErrorFactory.error404WithTypeUnknown;
 import static org.example.backend.factories.store.OrderFactory.randomOrder;
@@ -17,6 +20,7 @@ import static org.example.framework.Utilities.extractResponseAs;
 public class DeleteOrderTest {
 
     @Test
+    @Severity(CRITICAL)
     @Description("Check order can be deleted")
     public void checkOrderCanBeDeleted() {
         // Precondition
@@ -32,6 +36,7 @@ public class DeleteOrderTest {
     }
 
     @Test
+    @Severity(MINOR)
     @Description("Check deleting not existing order")
     public void checkDeletingNotExistingOrder() {
         Response response = deleteOrder(-1);
