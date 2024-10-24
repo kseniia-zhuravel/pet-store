@@ -37,3 +37,7 @@ Or copy and start any of the commands below in your terminal:
 * `allure generate target/allure-results` (to generate report locally)
 * `allure open` (to open local report)
 
+### Note:
+If commands were not started in terminal due to error "command not found", you will need to install Allure package using command:
+```bash
+brew install allure
