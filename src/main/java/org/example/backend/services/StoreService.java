@@ -14,34 +14,34 @@ public class StoreService {
 
     public static final ThreadLocal<Long> orderId = ThreadLocal.withInitial(() -> null);
 
-    @Step("Place order")
+    @Step
     public static Response placeOrderAndReturnResponse(Order order) {
         return sendPostRequest(STORE_ORDER_PATH, order);
     }
 
-    @Step("Place order")
+    @Step
     public static Order placeOrder(Order order) {
        Order actualOrder = sendPostRequest(STORE_ORDER_PATH, order, Order.class);
         orderId.set(actualOrder.getId());
         return actualOrder;
     }
 
-    @Step("Delete order {id}")
+    @Step
     public static Response deleteOrder(long id) {
         return sendDeleteRequest(String.format(STORE_ORDER_ORDER_ID_PATH, id));
     }
 
-    @Step("Get order {id} details")
+    @Step
     public static Order getOrderDetails(long id) {
         return sendGetRequest(String.format(STORE_ORDER_ORDER_ID_PATH, id), Order.class);
     }
 
-    @Step("Get order {id} details")
+    @Step
     public static <T> Response getOrderDetailsAsResponse(T id) {
         return sendGetRequest(String.format(STORE_ORDER_ORDER_ID_PATH, id));
     }
 
-    @Step("Get store inventory")
+    @Step
     public static Response getStoreInventory() {
         return sendGetRequest(STORE_INVENTORY_PATH);
     }
