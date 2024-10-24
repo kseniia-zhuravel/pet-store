@@ -1,10 +1,7 @@
 .idea/
-.DS_Store
 
 .allure/
 .allure-report/
 .allure-results/
 
 target/
-
-/src/main/resources/env/*.properties
