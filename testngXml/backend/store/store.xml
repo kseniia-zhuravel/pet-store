@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Store Test" parallel="methods">
+    <test name="Order validation">
+        <classes>
+            <class name="store.OrderValidationTest"/>
+        </classes>
+    </test>
+    <test name="Order details">
+        <classes>
+            <class name="store.OrderDetailsTest"/>
+        </classes>
+    </test>
+    <test name="Delete order">
+        <classes>
+            <class name="store.DeleteOrderTest"/>
+        </classes>
+    </test>
+    <test name="Store inventory">
+        <classes>
+            <class name="store.StoreInventoryTest"/>
+        </classes>
+    </test>
+</suite>
